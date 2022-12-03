@@ -19,7 +19,7 @@ public class Ability : MonoBehaviour
         _playedDeck = GetComponent<PlayedDeck>();
     }
 
-    public void Use(CardView card, CardView lastCardPlayed, Transform container, bool IsPlayerTurn, Suit usedSuit)
+    public void Use(CardView card, CardView lastCardPlayed, Transform container)
     {
         switch (card.Name)
         {
@@ -33,7 +33,7 @@ public class Ability : MonoBehaviour
                     _isGiveCards = false;
                 }
 
-                if (isCardWithName(NameCard.Six, container) == false)
+                if (IsCardWithName(NameCard.Six, container) == false)
                 {
                     _gameDeck.GiveCard(container, _takeCard);
                     _playedDeck.ChangeTurn();
@@ -61,7 +61,7 @@ public class Ability : MonoBehaviour
 
             case NameCard.Queen:
 
-                if (IsPlayerTurn == false)
+                if (_playedDeck.IsPlayerTurn == false)
                 {
                     int indexSuit = UnityEngine.Random.Range(0, 3);
                     Suit suit = (Suit)Enum.GetValues(typeof(Suit)).GetValue(indexSuit);
@@ -93,7 +93,7 @@ public class Ability : MonoBehaviour
         _playedDeck.ChangeSuit(card.Suit);
     }
 
-    private bool isCardWithName(NameCard name, Transform container)
+    private bool IsCardWithName(NameCard name, Transform container)
     {
         for (int i = 0; i < container.childCount; i++)
         {

@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -56,7 +55,7 @@ public class Enemy : MonoBehaviour
     {
         card.transform.SetParent(_playedContainer);
         card.ShowSprite();
-        _ability.Use(card, lastCardPlayed, _playerContainer, isPlayerTurn, usedSuid);
+        _ability.Use(card, lastCardPlayed, _playerContainer);
         _audioSource.Play();
     }
 }

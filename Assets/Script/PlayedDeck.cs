@@ -28,6 +28,7 @@ public class PlayedDeck : MonoBehaviour
     public int MaxTurnTime => 15;
     public int TurnTime => _turnTime;
     public bool IsPlayerTurn => _isPlayerTurn;
+    public Suit UsedSuit;
 
     public void StartGame()
     {
@@ -47,7 +48,7 @@ public class PlayedDeck : MonoBehaviour
 
         if (IsPossibleMoveCard(card))
         {
-            _ability.Use(card, lastCardPlayed, _enemyContainer, _isPlayerTurn, _usedSuid);
+            _ability.Use(card, lastCardPlayed, _enemyContainer);
             _audioSource.Play();
             return true;
         }

@@ -21,6 +21,7 @@ public class View : MonoBehaviour
         PlayedDeck.ChangedTurn += ChamgeTurn;
         GameDeck.ButtonPressed += ChangeGameDeckButtonActivity;
     }
+
     private void OnDisable()
     {
         PlayedDeck.MoveChange -= ChangeGameDeckButtonActivity;
