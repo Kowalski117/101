@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 1270504290677987456}
   - component: {fileID: 1270504290677987458}
   - component: {fileID: 1270504290677987459}
-  - component: {fileID: 7020482912868509379}
   - component: {fileID: -830840754028573743}
+  - component: {fileID: 4764625254740761189}
+  - component: {fileID: 7020482912868509379}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -78,6 +79,34 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &-830840754028573743
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270504290677987457}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &4764625254740761189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270504290677987457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d1dd7418eb58d4989c09fb3a1fa5d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _image: {fileID: 1270504290677987459}
+  _shirt: {fileID: 21300000, guid: ed5bacf1e0c0bde4b8204291fc22c383, type: 3}
+  Name: 0
+  Suit: 0
 --- !u!114 &7020482912868509379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,15 +120,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultParent: {fileID: 0}
---- !u!225 &-830840754028573743
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270504290677987457}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
