@@ -8,7 +8,7 @@ public class Ability : MonoBehaviour
 {
     [SerializeField] private GameDeck _gameDeck;
 
-    static public UnityAction ChooseSuit;
+    static public event UnityAction SuitChanged;
 
     private PlayedDeck _playedDeck;
     private int _takeCard = 0;
@@ -71,7 +71,7 @@ public class Ability : MonoBehaviour
                 }
                 else
                 {
-                    ChooseSuit?.Invoke();
+                    SuitChanged?.Invoke();
                 }
                 break;
 

@@ -16,16 +16,16 @@ public class View : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayedDeck.MoveChange += ChangeGameDeckButtonActivity;
-        PlayedDeck.SuidChanged += ShowSuit;
+        PlayedDeck.MoveChanged += ChangeGameDeckButtonActivity;
+        PlayedDeck.SuitChanged += ShowSuit;
         PlayedDeck.ChangedTurn += ChamgeTurn;
         GameDeck.ButtonPressed += ChangeGameDeckButtonActivity;
     }
 
     private void OnDisable()
     {
-        PlayedDeck.MoveChange -= ChangeGameDeckButtonActivity;
-        PlayedDeck.SuidChanged -= ShowSuit;
+        PlayedDeck.MoveChanged -= ChangeGameDeckButtonActivity;
+        PlayedDeck.SuitChanged -= ShowSuit;
         PlayedDeck.ChangedTurn -= ChamgeTurn;
         GameDeck.ButtonPressed -= ChangeGameDeckButtonActivity;
     }

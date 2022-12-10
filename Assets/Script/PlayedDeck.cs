@@ -13,25 +13,38 @@ public class PlayedDeck : MonoBehaviour
     [SerializeField] private GameDeck _gameDeck;
     [SerializeField] private AudioSource _audioSource;
 
-    static public UnityAction<Suit> SuidChanged;
-    static public UnityAction<bool> MoveChange;
-    static public UnityAction EndTheGame;
-    static public UnityAction ChangedTurn;
+    static public event UnityAction<Suit> SuitChanged;
+    static public event UnityAction<bool> MoveChanged;
+    static public event UnityAction EndTheGame;
+    static public event UnityAction ChangedTurn;
 
-    private int _turnTime;
-    private int _turn;
+    private float _turnTime;
+    private float _turn;
     private bool _isPlayerTurn => _turn % 2 != 0;
-    private Coroutine _coroutine;
+    private bool _isGameProgress = false;
     private Coroutine _wait;
     private Suit _usedSuid;
 
     public int MaxTurnTime => 15;
-    public int TurnTime => _turnTime;
+    public float TurnTime => _turnTime;
     public bool IsPlayerTurn => _isPlayerTurn;
     public Suit UsedSuit;
 
+    private void Update()
+    {
+        if (_isGameProgress)
+        {
+            _turnTime -= Time.deltaTime;
+
+            if (_turnTime <= 0)
+                EndTimeTurn();
+        }
+    }
+
     public void StartGame()
     {
+        _turnTime = MaxTurnTime;
+        _isGameProgress = true;
         _turn = 0;
         DealCards();
         var lastCardPlayed = GetLastCard(_playedContainer);
@@ -61,14 +74,22 @@ public class PlayedDeck : MonoBehaviour
     public void ChangeSuit(Suit suit)
     {
         _usedSuid = suit;
-        SuidChanged?.Invoke(suit);
+        SuitChanged?.Invoke(suit);
     }
 
     public void ChangeTurn()
     {
-        StopCoroutine(_coroutine);
-        StopCoroutine(_wait);
+        _turnTime = MaxTurnTime;
         _turn++;
+
+        if (_wait != null)
+            StopCoroutine(_wait);
+
+        if (_isPlayerTurn == false)
+        {
+            float waitSecond = Random.Range(1, 5);
+            _wait = StartCoroutine(WaitBeforeGoing(waitSecond));
+        }
 
         if (IsGameOver())
         {
@@ -76,14 +97,8 @@ public class PlayedDeck : MonoBehaviour
             return;
         }
 
-        if (_isPlayerTurn == false)
-        {
-            float waitSecond = UnityEngine.Random.Range(1, 5);
-            _wait = StartCoroutine(WaitBeforeGoing(waitSecond));
-        }
         ChangedTurn?.Invoke();
-        MoveChange?.Invoke(_isPlayerTurn);
-        _coroutine = StartCoroutine(TurnFunc());
+        MoveChanged?.Invoke(_isPlayerTurn);
     }
 
 
@@ -98,23 +113,15 @@ public class PlayedDeck : MonoBehaviour
 
         if (card.Name == lastCardPlayed.Name || card.Suit == _usedSuid || card.Name == NameCard.Queen)
             return true;
-
         else
             return false;
     }
 
     private void DealCards()
     {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-        if (_wait != null)
-            StopCoroutine(_wait);
-
         _gameDeck.GiveCard(_playedContainer, 1);
         _gameDeck.GiveCard(_playerContainer, 5);
         _gameDeck.GiveCard(_enemyContainer, 5);
-        _coroutine = StartCoroutine(TurnFunc());
-        _wait = StartCoroutine(WaitBeforeGoing(5));
     }
 
     private bool IsGameOver()
@@ -128,13 +135,21 @@ public class PlayedDeck : MonoBehaviour
 
     private void GameOver()
     {
+        _isGameProgress = false;
         EndTheGame?.Invoke();
     }
 
-    IEnumerator TurnFunc()
+    private void EndTimeTurn()
     {
-        _turnTime = MaxTurnTime;
+        if (_isPlayerTurn)
+            _gameDeck.GiveCard(_playerContainer, 1);
+        else
+            _gameDeck.GiveCard(_enemyContainer, 1);
+        ChangeTurn();
+    }
 
+    private IEnumerator TurnFunc()
+    {
         if (_isPlayerTurn)
         {
             while (_turnTime-- > 0)
@@ -160,7 +175,7 @@ public class PlayedDeck : MonoBehaviour
         ChangeTurn();
     }
 
-    IEnumerator WaitBeforeGoing(float value)
+    private IEnumerator WaitBeforeGoing(float value)
     {
         yield return new WaitForSeconds(value);
         _enemy.Move(_isPlayerTurn, _usedSuid);

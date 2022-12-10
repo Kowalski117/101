@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CreateCards))]
+[RequireComponent(typeof(CardCreator))]
 
 public class BuildingDeck : MonoBehaviour
 {
@@ -10,7 +10,7 @@ public class BuildingDeck : MonoBehaviour
 
     private List<Card> _deck = new List<Card>();
     private string _spritePath = "Sprite/Cards/";
-    private CreateCards _createCards;
+    private CardCreator _cardCreator;
 
     public List<Card> Deck => _deck;
 
@@ -23,8 +23,8 @@ public class BuildingDeck : MonoBehaviour
                 _deck.Add(new Card((NameCard)Enum.GetValues(typeof(NameCard)).GetValue(j), (Suit)Enum.GetValues(typeof(Suit)).GetValue(i), _spritePath + (NameCard)Enum.GetValues(typeof(NameCard)).GetValue(j) + (Suit)Enum.GetValues(typeof(Suit)).GetValue(i)));
             }
         }
-        _createCards = GetComponent<CreateCards>();
+        _cardCreator = GetComponent<CardCreator>();
         _deckContainer = GetComponent<Transform>();
-        _createCards.Render(Deck, _deckContainer);
+        _cardCreator.Render(Deck, _deckContainer);
     }
 }

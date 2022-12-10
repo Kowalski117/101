@@ -19,12 +19,12 @@ public class ChooseSuit : MonoBehaviour
 
     private void OnEnable()
     {
-        Ability.ChooseSuit += ShowChangeSuitScreen;
+        Ability.SuitChanged += ShowChangeSuitScreen;
     }
 
     private void OnDisable()
     {
-        Ability.ChooseSuit -= ShowChangeSuitScreen;
+        Ability.SuitChanged -= ShowChangeSuitScreen;
     }
 
     public void OnClickDiamonds()

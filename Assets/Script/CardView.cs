@@ -6,15 +6,18 @@ public class CardView : MonoBehaviour
     [SerializeField] private Image _image;
     [SerializeField] private Sprite _sprite;
     [SerializeField] private Sprite _shirt;
-    public NameCard Name;
-    public Suit Suit;
+    private NameCard _name;
+    private Suit _suit;
+
+    public NameCard Name => _name;
+    public Suit Suit => _suit;
 
     public void Render(Card card)
     {
         ShowShirt();
         _sprite = card.Sprite;
-        Name = card.Name;
-        Suit = card.Suit;
+        _name = card.Name;
+        _suit = card.Suit;
     }
 
     public void ShowSprite()

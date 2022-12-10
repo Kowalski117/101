@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreateCards : MonoBehaviour
+public class CardCreator : MonoBehaviour
 {
     [SerializeField] private CardView _cardView;
 
