@@ -6,6 +6,7 @@ public class CardView : MonoBehaviour
     [SerializeField] private Image _image;
     [SerializeField] private Sprite _sprite;
     [SerializeField] private Sprite _shirt;
+
     private NameCard _name;
     private Suit _suit;
 

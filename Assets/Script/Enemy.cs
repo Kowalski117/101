@@ -5,7 +5,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Transform _enemyContainer;
     [SerializeField] private Transform _playedContainer;
     [SerializeField] private Transform _playerContainer;
-
     [SerializeField] private PlayedDeck _playedDeck;
     [SerializeField] private Ability _ability;
     [SerializeField] private GameDeck _gameDeck;

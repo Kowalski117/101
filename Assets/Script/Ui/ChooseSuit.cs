@@ -4,6 +4,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(CanvasGroup))]
 public class ChooseSuit : MonoBehaviour
 {
+    [SerializeField] private Ability _ability;
     [SerializeField] private Button _diamonds;
     [SerializeField] private Button _clubs;
     [SerializeField] private Button _hearts;
@@ -19,12 +20,12 @@ public class ChooseSuit : MonoBehaviour
 
     private void OnEnable()
     {
-        Ability.SuitChanged += ShowChangeSuitScreen;
+        _ability.SuitChanged += ShowChangeSuitScreen;
     }
 
     private void OnDisable()
     {
-        Ability.SuitChanged -= ShowChangeSuitScreen;
+        _ability.SuitChanged -= ShowChangeSuitScreen;
     }
 
     public void OnClickDiamonds()

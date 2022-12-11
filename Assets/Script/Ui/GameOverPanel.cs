@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameOverPanel : MonoBehaviour
 {
+    [SerializeField] private PlayedDeck _playedDeck;
     [SerializeField] private GameObject _panel;
     [SerializeField] private Transform _handPlayer;
     [SerializeField] private Transform _handEnemy;
@@ -32,14 +33,14 @@ public class GameOverPanel : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayedDeck.EndTheGame += Open;
+        _playedDeck.EndTheGame += Open;
         _continue.onClick.AddListener(OnClickButtonContinue);
         _newGame.onClick.AddListener(OnClickButtonNewGame);
     }
 
     private void OnDisable()
     {
-        PlayedDeck.EndTheGame -= Open;
+        _playedDeck.EndTheGame -= Open;
         _continue.onClick.RemoveListener(OnClickButtonContinue);
         _newGame.onClick.RemoveListener(OnClickButtonNewGame);
     }

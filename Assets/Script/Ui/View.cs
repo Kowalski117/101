@@ -5,6 +5,7 @@ using TMPro;
 public class View : MonoBehaviour
 {
     [SerializeField] private PlayedDeck _playedDeck;
+    [SerializeField] private GameDeck _gameDeck;
     [SerializeField] private Button _buttonDeck;
     [SerializeField] private TMP_Text _text;
     [SerializeField] private Image _suit;
@@ -16,18 +17,18 @@ public class View : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayedDeck.MoveChanged += ChangeGameDeckButtonActivity;
-        PlayedDeck.SuitChanged += ShowSuit;
-        PlayedDeck.ChangedTurn += ChamgeTurn;
-        GameDeck.ButtonPressed += ChangeGameDeckButtonActivity;
+        _playedDeck.MoveChanged += ChangeGameDeckButtonActivity;
+        _playedDeck.SuitChanged += ShowSuit;
+        _playedDeck.ChangedTurn += ChamgeTurn;
+        _gameDeck.ButtonPressed += ChangeGameDeckButtonActivity;
     }
 
     private void OnDisable()
     {
-        PlayedDeck.MoveChanged -= ChangeGameDeckButtonActivity;
-        PlayedDeck.SuitChanged -= ShowSuit;
-        PlayedDeck.ChangedTurn -= ChamgeTurn;
-        GameDeck.ButtonPressed -= ChangeGameDeckButtonActivity;
+        _playedDeck.MoveChanged -= ChangeGameDeckButtonActivity;
+        _playedDeck.SuitChanged -= ShowSuit;
+        _playedDeck.ChangedTurn -= ChamgeTurn;
+        _gameDeck.ButtonPressed -= ChangeGameDeckButtonActivity;
     }
 
     private void Start()

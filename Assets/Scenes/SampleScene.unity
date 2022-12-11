@@ -3227,6 +3227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c19ab3b7f59a92f48a874bafb0e836be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ability: {fileID: 75882977}
   _diamonds: {fileID: 867199503}
   _clubs: {fileID: 872437124}
   _hearts: {fileID: 430801754}
@@ -4366,6 +4367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playedDeck: {fileID: 75882976}
+  _gameDeck: {fileID: 51763100}
   _buttonDeck: {fileID: 51763099}
   _text: {fileID: 115561570}
   _suit: {fileID: 1475626978}
@@ -9452,6 +9454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bdd231544a1f43438b2e31592674c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playedDeck: {fileID: 75882976}
   _panel: {fileID: 2132168983}
   _handPlayer: {fileID: 1249419381}
   _handEnemy: {fileID: 608712849}

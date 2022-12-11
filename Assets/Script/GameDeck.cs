@@ -10,7 +10,7 @@ public class GameDeck : MonoBehaviour
     [SerializeField] private Transform _playedContainer;
     [SerializeField] private AudioSource _audioSource;
 
-    static public UnityAction<bool> ButtonPressed;
+    public UnityAction<bool> ButtonPressed;
 
     private Transform _card;
 

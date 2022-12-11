@@ -7,16 +7,15 @@ public class PlayedDeck : MonoBehaviour
     [SerializeField] private Transform _playerContainer;
     [SerializeField] private Transform _enemyContainer;
     [SerializeField] private Transform _playedContainer;
-
     [SerializeField] private Enemy _enemy;
     [SerializeField] private Ability _ability;
     [SerializeField] private GameDeck _gameDeck;
     [SerializeField] private AudioSource _audioSource;
 
-    static public event UnityAction<Suit> SuitChanged;
-    static public event UnityAction<bool> MoveChanged;
-    static public event UnityAction EndTheGame;
-    static public event UnityAction ChangedTurn;
+    public event UnityAction<Suit> SuitChanged;
+    public event UnityAction<bool> MoveChanged;
+    public event UnityAction EndTheGame;
+    public event UnityAction ChangedTurn;
 
     private float _turnTime;
     private float _turn;
@@ -28,7 +27,7 @@ public class PlayedDeck : MonoBehaviour
     public int MaxTurnTime => 15;
     public float TurnTime => _turnTime;
     public bool IsPlayerTurn => _isPlayerTurn;
-    public Suit UsedSuit;
+    public Suit UsedSuit => _usedSuid;
 
     private void Update()
     {
@@ -145,33 +144,6 @@ public class PlayedDeck : MonoBehaviour
             _gameDeck.GiveCard(_playerContainer, 1);
         else
             _gameDeck.GiveCard(_enemyContainer, 1);
-        ChangeTurn();
-    }
-
-    private IEnumerator TurnFunc()
-    {
-        if (_isPlayerTurn)
-        {
-            while (_turnTime-- > 0)
-            {
-                yield return new WaitForSeconds(1);
-            }
-            if (_turnTime < 0)
-            {
-                _gameDeck.GiveCard(_playerContainer, 1);
-            }
-        }
-        else
-        {
-            while (_turnTime-- > 0)
-            {
-                yield return new WaitForSeconds(1);
-            }
-            if (_turnTime < 0)
-            {
-                _gameDeck.GiveCard(_enemyContainer, 1);
-            }
-        }
         ChangeTurn();
     }
 
