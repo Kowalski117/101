@@ -6,16 +6,17 @@ public class Game : MonoBehaviour
     [SerializeField] private Transform[] _decks;
     [SerializeField] private PlayedDeck _playedDeck;
     [SerializeField] private Menu _menu;
+    [SerializeField] private ButtonNewGame _newGame;
 
     private void OnEnable()
     {
-        ButtonNewGame.NewGame += NewGame;
+        _newGame.NewGame += NewGame;
         GameOverPanel.Continue += NewGame;
     }
 
     private void OnDisable()
     {
-        ButtonNewGame.NewGame -= NewGame;
+        _newGame.NewGame -= NewGame;
         GameOverPanel.Continue -= NewGame;
     }
 
@@ -41,7 +42,7 @@ public class Game : MonoBehaviour
             {
                 card = cards[j];
                 card.SetParent(_deck);
-                card.GetComponent<CardView>().ShowShirt();
+                card.GetComponent<CardView>().SetSpriteShirt();
             }
         }
     }

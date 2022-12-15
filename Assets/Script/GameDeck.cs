@@ -10,9 +10,9 @@ public class GameDeck : MonoBehaviour
     [SerializeField] private Transform _playedContainer;
     [SerializeField] private AudioSource _audioSource;
 
-    public UnityAction<bool> ButtonPressed;
-
     private Transform _card;
+
+    public event UnityAction<bool> ButtonPressed;
 
     public void OnClick()
     {
@@ -54,10 +54,10 @@ public class GameDeck : MonoBehaviour
     {
         if (container == _playerContainer || container == _playedContainer)
         {
-            _card.GetComponent<CardView>().ShowSprite();
+            _card.GetComponent<CardView>().SetSpriteCard();
         }
         else
-            _card.GetComponent<CardView>().ShowShirt();
+            _card.GetComponent<CardView>().SetSpriteShirt();
     }
 
     IEnumerator ShuffleCards(Transform container)

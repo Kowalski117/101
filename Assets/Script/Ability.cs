@@ -8,11 +8,11 @@ public class Ability : MonoBehaviour
 {
     [SerializeField] private GameDeck _gameDeck;
 
-    public event UnityAction SuitChanged;
-
     private PlayedDeck _playedDeck;
     private int _takeCard = 0;
     private bool _isGiveCards;
+
+    public event UnityAction SuitChanged;
 
     private void Start()
     {

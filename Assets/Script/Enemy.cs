@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour
     private void PutCard(CardView card, CardView lastCardPlayed, bool isPlayerTurn, Suit usedSuid)
     {
         card.transform.SetParent(_playedContainer);
-        card.ShowSprite();
+        card.SetSpriteCard();
         _ability.Use(card, lastCardPlayed, _playerContainer);
         _audioSource.Play();
     }

@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class CardMovement : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public Transform DefaultParent;
+    private Transform _defaultParent;
     private Camera _camera;
     private Vector2 _offset;
     private bool _isDragging;
@@ -13,17 +13,22 @@ public class CardMovement : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         _camera = Camera.allCameras[0];
     }
 
+    public void SetDefultParent(Transform transform)
+    {
+        _defaultParent = transform;
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         _offset = transform.position - _camera.ScreenToWorldPoint(eventData.position);
-        DefaultParent = transform.parent;
+        _defaultParent = transform.parent;
 
-        _isDragging = DefaultParent.TryGetComponent<Player>(out Player handPlayer1);
+        _isDragging = _defaultParent.TryGetComponent<Player>(out Player Player);
 
         if (!_isDragging)
             return;
 
-        transform.SetParent(DefaultParent.parent);
+        transform.SetParent(_defaultParent.parent);
         GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
@@ -41,7 +46,7 @@ public class CardMovement : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         if (!_isDragging)
             return;
 
-        transform.SetParent(DefaultParent);
+        transform.SetParent(_defaultParent);
         GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
 }

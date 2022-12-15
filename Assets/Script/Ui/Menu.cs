@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,32 +5,33 @@ public class Menu : MonoBehaviour
 {
     [SerializeField] private GameObject _menuPanel;
     [SerializeField] private GameObject _helpPanel;
-    [SerializeField] private Button _buttonMenu;
-    [SerializeField] private Button _buttonContinue;
-    [SerializeField] private Button _buttonHelp;
-    [SerializeField] private Button _buttonExit;
+    [SerializeField] private Button _menu;
+    [SerializeField] private Button _continue;
+    [SerializeField] private Button _help;
+    [SerializeField] private Button _exit;
+    [SerializeField] private ButtonNewGame _newGame;
 
     private void Awake()
     {
-        _buttonContinue.interactable = false;
+        _continue.interactable = false;
     }
 
     private void OnEnable()
     {
-        _buttonMenu.onClick.AddListener(OnButtonClickMenu);
-        _buttonContinue.onClick.AddListener(OnButtonClickContinue);
-        _buttonHelp.onClick.AddListener(OnButtonClickHelp);
-        _buttonExit.onClick.AddListener(OnButtonClickExit);
-        ButtonNewGame.NewGame += Close;
+        _menu.onClick.AddListener(OnButtonClickMenu);
+        _continue.onClick.AddListener(OnButtonClickContinue);
+        _help.onClick.AddListener(OnButtonClickHelp);
+        _exit.onClick.AddListener(OnButtonClickExit);
+        _newGame.NewGame += Close;
     }
 
     private void OnDisable()
     {
-        _buttonMenu.onClick.RemoveListener(OnButtonClickMenu);
-        _buttonContinue.onClick.RemoveListener(OnButtonClickContinue);
-        _buttonHelp.onClick.RemoveListener(OnButtonClickHelp);
-        _buttonExit.onClick.RemoveListener(OnButtonClickExit);
-        ButtonNewGame.NewGame -= Close;
+        _menu.onClick.RemoveListener(OnButtonClickMenu);
+        _continue.onClick.RemoveListener(OnButtonClickContinue);
+        _help.onClick.RemoveListener(OnButtonClickHelp);
+        _exit.onClick.RemoveListener(OnButtonClickExit);
+        _newGame.NewGame -= Close;
     }
 
     public void Open()
@@ -49,7 +48,7 @@ public class Menu : MonoBehaviour
 
     private void OnButtonClickMenu()
     {
-        _buttonContinue.interactable = true;
+        _continue.interactable = true;
         Open();
     }
 

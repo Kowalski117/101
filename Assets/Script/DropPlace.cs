@@ -18,6 +18,6 @@ public class DropPlace : MonoBehaviour, IDropHandler
         CardView cards = eventData.pointerDrag.GetComponent<CardView>();
 
         if (card && _gameDeck.CanPut(cards))
-            card.DefaultParent = transform;
+            card.SetDefultParent(transform);
     }
 }

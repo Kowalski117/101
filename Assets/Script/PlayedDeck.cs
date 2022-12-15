@@ -12,18 +12,18 @@ public class PlayedDeck : MonoBehaviour
     [SerializeField] private GameDeck _gameDeck;
     [SerializeField] private AudioSource _audioSource;
 
+    private float _turnTime;
+    private float _turn;
+    private bool _isGameProgress = false;
+    private Coroutine _wait;
+    private Suit _usedSuid;
+
     public event UnityAction<Suit> SuitChanged;
     public event UnityAction<bool> MoveChanged;
     public event UnityAction EndTheGame;
     public event UnityAction ChangedTurn;
 
-    private float _turnTime;
-    private float _turn;
     private bool _isPlayerTurn => _turn % 2 != 0;
-    private bool _isGameProgress = false;
-    private Coroutine _wait;
-    private Suit _usedSuid;
-
     public int MaxTurnTime => 15;
     public float TurnTime => _turnTime;
     public bool IsPlayerTurn => _isPlayerTurn;

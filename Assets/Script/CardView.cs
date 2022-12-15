@@ -15,18 +15,18 @@ public class CardView : MonoBehaviour
 
     public void Render(Card card)
     {
-        ShowShirt();
+        SetSpriteShirt();
         _sprite = card.Sprite;
         _name = card.Name;
         _suit = card.Suit;
     }
 
-    public void ShowSprite()
+    public void SetSpriteCard()
     {
         _image.sprite = _sprite;
     }
 
-    public void ShowShirt()
+    public void SetSpriteShirt()
     {
         _image.sprite = _shirt;
     }

@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class ButtonNewGame : MonoBehaviour
 {
     private Button _button;
-    static public UnityAction NewGame;
+
+    public event UnityAction NewGame;
 
     private void Awake()
     {

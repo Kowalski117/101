@@ -195,7 +195,7 @@ public class GameOverPanel : MonoBehaviour
             _audioSource.Play();
             card = transforms[i];
             card.SetParent(container);
-            card.GetComponent<CardView>().ShowSprite();
+            card.GetComponent<CardView>().SetSpriteCard();
             CountTheScore();
         }
 
