@@ -8,7 +8,7 @@ public class ButtonNewGame : MonoBehaviour
 {
     private Button _button;
 
-    public event UnityAction NewGame;
+    static public event UnityAction NewGame;
 
     private void Awake()
     {

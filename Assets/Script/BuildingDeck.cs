@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class BuildingDeck : MonoBehaviour
 {
-    private Transform _deckContainer;
-
     private List<Card> _deck = new List<Card>();
     private string _spritePath = "Sprite/Cards/";
     private CardCreator _cardCreator;
@@ -24,7 +22,6 @@ public class BuildingDeck : MonoBehaviour
             }
         }
         _cardCreator = GetComponent<CardCreator>();
-        _deckContainer = GetComponent<Transform>();
-        _cardCreator.Render(Deck, _deckContainer);
+        _cardCreator.Render(Deck, this.transform);
     }
 }

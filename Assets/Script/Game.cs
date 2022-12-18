@@ -6,17 +6,16 @@ public class Game : MonoBehaviour
     [SerializeField] private Transform[] _decks;
     [SerializeField] private PlayedDeck _playedDeck;
     [SerializeField] private Menu _menu;
-    [SerializeField] private ButtonNewGame _newGame;
 
     private void OnEnable()
     {
-        _newGame.NewGame += NewGame;
+        ButtonNewGame.NewGame += NewGame;
         GameOverPanel.Continue += NewGame;
     }
 
     private void OnDisable()
     {
-        _newGame.NewGame -= NewGame;
+        ButtonNewGame.NewGame -= NewGame;
         GameOverPanel.Continue -= NewGame;
     }
 

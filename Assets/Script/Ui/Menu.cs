@@ -9,7 +9,6 @@ public class Menu : MonoBehaviour
     [SerializeField] private Button _continue;
     [SerializeField] private Button _help;
     [SerializeField] private Button _exit;
-    [SerializeField] private ButtonNewGame _newGame;
 
     private void Awake()
     {
@@ -22,7 +21,7 @@ public class Menu : MonoBehaviour
         _continue.onClick.AddListener(OnButtonClickContinue);
         _help.onClick.AddListener(OnButtonClickHelp);
         _exit.onClick.AddListener(OnButtonClickExit);
-        _newGame.NewGame += Close;
+        ButtonNewGame.NewGame += Close;
     }
 
     private void OnDisable()
@@ -31,7 +30,7 @@ public class Menu : MonoBehaviour
         _continue.onClick.RemoveListener(OnButtonClickContinue);
         _help.onClick.RemoveListener(OnButtonClickHelp);
         _exit.onClick.RemoveListener(OnButtonClickExit);
-        _newGame.NewGame -= Close;
+        ButtonNewGame.NewGame -= Close;
     }
 
     public void Open()

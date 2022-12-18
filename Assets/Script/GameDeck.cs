@@ -36,7 +36,7 @@ public class GameDeck : MonoBehaviour
 
             if (cards.Length <= 2)
             {
-                StartCoroutine(ShuffleCards(_deckContainer));
+                ShuffleCards(_deckContainer);
             }
 
             if (cards.Length != 1)
@@ -60,7 +60,7 @@ public class GameDeck : MonoBehaviour
             _card.GetComponent<CardView>().SetSpriteShirt();
     }
 
-    IEnumerator ShuffleCards(Transform container)
+    private void ShuffleCards(Transform container)
     {
         Transform[] transforms = _playedContainer.GetComponentsInChildren<Transform>();
 
@@ -69,8 +69,6 @@ public class GameDeck : MonoBehaviour
             _card = transforms[i];
             _card.SetParent(container);
             DefineDeck(container);
-            _audioSource.Play();
-            yield return new WaitForSeconds(0.1f);
         }
     }
 }

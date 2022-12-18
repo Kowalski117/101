@@ -79,18 +79,15 @@ public class GameOverPanel : MonoBehaviour
         Transform[] cardsPlayer = _handPlayer.GetComponentsInChildren<Transform>();
         Transform[] cardsEnemy = _handEnemy.GetComponentsInChildren<Transform>();
 
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
         if (cardsEnemy.Length > cardsPlayer.Length)
         {
             _isPlayerWinnerParty = true;
-            _coroutine = StartCoroutine(ShuffleCards(cardsEnemy, _containerEnemy));
+            ShuffleCards(cardsEnemy, _containerEnemy);
         }
         else
         {
             _isPlayerWinnerParty = false;
-            _coroutine = StartCoroutine(ShuffleCards(cardsPlayer, _containerPlayer));
+            ShuffleCards(cardsPlayer, _containerPlayer);
         }
     }
 
@@ -184,25 +181,52 @@ public class GameOverPanel : MonoBehaviour
             _continue.interactable = isInteractable;
     }
 
-    IEnumerator ShuffleCards(Transform[] transforms, Transform container)
+
+    private void ShuffleCards(Transform[] transforms, Transform container)
     {
-        float expectation = 1.0f;
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
+        if (transforms.Length > 1)
+        {
+            _coroutine = StartCoroutine(WaitTime(transforms, container));
+        }
+        else
+        {
+            if (IsThereWinnerGame())
+                ViewWinnerGame();
+
+            ChangeInteractableButtons(true);
+        }
+    }
+
+    private void MoveCard(Transform[] transforms, Transform container)
+    {
         Transform card;
 
-        for (int i = 1; i < transforms.Length; i++)
+        _audioSource.Play();
+        card = transforms[transforms.Length - 1];
+        card.SetParent(container);
+        card.GetComponent<CardView>().SetSpriteCard();
+        CountTheScore();
+
+        if (_isPlayerWinnerParty)
         {
-            yield return new WaitForSeconds(expectation);
-            _audioSource.Play();
-            card = transforms[i];
-            card.SetParent(container);
-            card.GetComponent<CardView>().SetSpriteCard();
-            CountTheScore();
+            transforms = _handEnemy.GetComponentsInChildren<Transform>();
+        }
+        else
+        {
+            transforms = _handPlayer.GetComponentsInChildren<Transform>();
         }
 
-        if (IsThereWinnerGame())
-            ViewWinnerGame();
+        ShuffleCards(transforms,container);
+    }
 
-        ChangeInteractableButtons(true);
+    private IEnumerator WaitTime(Transform[] transforms, Transform container)
+    {
+        float expectation = 1.0f;
+        yield return new WaitForSeconds(expectation);
+        MoveCard(transforms, container);
     }
 
     private int GetCardPoint(CardView card)

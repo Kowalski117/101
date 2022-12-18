@@ -822,19 +822,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 53663714}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
-        m_MethodName: OnClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &53663714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4394,6 +4382,7 @@ MonoBehaviour:
   - {fileID: 496988917}
   _playedDeck: {fileID: 75882976}
   _menu: {fileID: 1963326307}
+  _newGame: {fileID: 856089986}
 --- !u!1 &608712848
 GameObject:
   m_ObjectHideFlags: 0
@@ -9466,7 +9455,7 @@ MonoBehaviour:
   _enemyTotalScore: {fileID: 387652008}
   _winner: {fileID: 897269755}
   _continue: {fileID: 599493115}
-  _newGame: {fileID: 723128957}
+  _newGame: {fileID: 856089983}
   _audioSource: {fileID: 2124682011}
 --- !u!1 &1864360136
 GameObject:
@@ -9778,10 +9767,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _menuPanel: {fileID: 161733921}
   _helpPanel: {fileID: 1032935400}
-  _buttonMenu: {fileID: 53663713}
-  _buttonContinue: {fileID: 1179621368}
-  _buttonHelp: {fileID: 2102760608}
-  _buttonExit: {fileID: 1739054184}
+  _menu: {fileID: 53663713}
+  _continue: {fileID: 1179621368}
+  _help: {fileID: 2102760608}
+  _exit: {fileID: 1739054184}
+  _newGame: {fileID: 856089986}
 --- !u!224 &1963326308
 RectTransform:
   m_ObjectHideFlags: 0
