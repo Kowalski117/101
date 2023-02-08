@@ -4382,7 +4382,6 @@ MonoBehaviour:
   - {fileID: 496988917}
   _playedDeck: {fileID: 75882976}
   _menu: {fileID: 1963326307}
-  _newGame: {fileID: 856089986}
 --- !u!1 &608712848
 GameObject:
   m_ObjectHideFlags: 0
@@ -4956,7 +4955,7 @@ GameObject:
   - component: {fileID: 723128959}
   - component: {fileID: 723128958}
   - component: {fileID: 723128957}
-  - component: {fileID: 723128956}
+  - component: {fileID: 723128960}
   m_Layer: 5
   m_Name: ButtonNewGame
   m_TagString: Untagged
@@ -4985,18 +4984,6 @@ RectTransform:
   m_AnchoredPosition: {x: 150, y: -305}
   m_SizeDelta: {x: 250, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &723128956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 723128954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4fce699ddca8c94186a7533ce443953, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &723128957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5079,6 +5066,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723128954}
   m_CullTransparentMesh: 1
+--- !u!114 &723128960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723128954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4fce699ddca8c94186a7533ce443953, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &748324692
 GameObject:
   m_ObjectHideFlags: 0
@@ -9455,7 +9454,7 @@ MonoBehaviour:
   _enemyTotalScore: {fileID: 387652008}
   _winner: {fileID: 897269755}
   _continue: {fileID: 599493115}
-  _newGame: {fileID: 856089983}
+  _newGame: {fileID: 723128957}
   _audioSource: {fileID: 2124682011}
 --- !u!1 &1864360136
 GameObject:
@@ -9771,7 +9770,6 @@ MonoBehaviour:
   _continue: {fileID: 1179621368}
   _help: {fileID: 2102760608}
   _exit: {fileID: 1739054184}
-  _newGame: {fileID: 856089986}
 --- !u!224 &1963326308
 RectTransform:
   m_ObjectHideFlags: 0
